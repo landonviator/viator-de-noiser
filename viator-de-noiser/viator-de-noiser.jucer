@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="zWXZT8" name="viator-de-noiser" projectType="audioplug" useAppConfig="0"
+              addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1" companyName="Viator DSP"
+              version="1.0.0" companyWebsite="https://www.patreon.com/ViatorDSP"
+              companyEmail="viatordsp@gmail.com" pluginName="Noise-Reducer"
+              pluginDesc="A noise reduction plugin.">
+  <MAINGROUP id="D3bTvF" name="viator-de-noiser">
+    <GROUP id="{B3AD50A4-F2A6-DD38-921E-152EAEA8E21D}" name="Source">
+      <GROUP id="{D3A9D711-4B20-D814-4A06-ABB5C79A24CC}" name="Assets">
+        <FILE id="LiJRxX" name="landon.png" compile="0" resource="1" file="Source/Assets/landon.png"/>
+      </GROUP>
+      <GROUP id="{7EFC17BA-8A52-967A-332B-B6F919C97BD2}" name="components">
+        <FILE id="Py41SX" name="Header.cpp" compile="1" resource="0" file="Source/components/Header.cpp"/>
+        <FILE id="bbB1xM" name="Header.h" compile="0" resource="0" file="Source/components/Header.h"/>
+        <FILE id="pcxh0n" name="NavBar.cpp" compile="1" resource="0" file="Source/components/NavBar.cpp"/>
+        <FILE id="GqtZiX" name="NavBar.h" compile="0" resource="0" file="Source/components/NavBar.h"/>
+        <FILE id="IW759g" name="PresetBrowser.cpp" compile="1" resource="0"
+              file="Source/components/PresetBrowser.cpp"/>
+        <FILE id="kJDk2H" name="PresetBrowser.h" compile="0" resource="0" file="Source/components/PresetBrowser.h"/>
+        <FILE id="SIcTsP" name="SettingsPage.cpp" compile="1" resource="0"
+              file="Source/components/SettingsPage.cpp"/>
+        <FILE id="tIrs6c" name="SettingsPage.h" compile="0" resource="0" file="Source/components/SettingsPage.h"/>
+      </GROUP>
+      <GROUP id="{81D04EEE-53CD-541F-FCA1-11663BDD4E4D}" name="Globals">
+        <FILE id="Dm1ShK" name="Globals.cpp" compile="1" resource="0" file="Source/Globals/Globals.cpp"/>
+        <FILE id="RK1gqk" name="Globals.h" compile="0" resource="0" file="Source/Globals/Globals.h"/>
+        <FILE id="Bn3GUb" name="Parameters.cpp" compile="1" resource="0" file="Source/Globals/Parameters.cpp"/>
+        <FILE id="F3iPlU" name="Parameters.h" compile="0" resource="0" file="Source/Globals/Parameters.h"/>
+      </GROUP>
+      <GROUP id="{B2946F49-5DCF-0DA9-2C95-25C2915DCF26}" name="LAF">
+        <FILE id="BSFfoZ" name="Colors.cpp" compile="1" resource="0" file="Source/LAF/Colors.cpp"/>
+        <FILE id="Uj6HR5" name="Colors.h" compile="0" resource="0" file="Source/LAF/Colors.h"/>
+      </GROUP>
+      <FILE id="vmrSK5" name="includes.h" compile="0" resource="0" file="Source/includes.h"/>
+      <FILE id="rFpInO" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="To7Tn1" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="GvVZ8w" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="s2k3fu" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+    </GROUP>
+  </MAINGROUP>
+  <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug" targetName="viator-de-noiser"/>
+        <CONFIGURATION isDebug="0" name="Release" targetName="viator-de-noiser"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../modules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../modules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../modules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../modules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../modules/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../modules/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../modules/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../modules/JUCE/modules"/>
+        <MODULEPATH id="juce_dsp" path="../modules/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../modules/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../modules/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../modules/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../modules/JUCE/modules"/>
+        <MODULEPATH id="viator_modules" path="../modules/viatordsp"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="0"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_dsp" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+    <MODULE id="viator_modules" showAllCode="1" useLocalCopy="0" useGlobalPath="0"/>
+  </MODULES>
+</JUCERPROJECT>
