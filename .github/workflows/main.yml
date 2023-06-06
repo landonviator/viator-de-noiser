@@ -45,12 +45,19 @@ jobs:
         with:
           node-version: "14"
 
+      - name: Build Projucer
+        run: |
+          cd modules/JUCE/extras/Projucer/Builds/MacOSX
+          xcodebuild -project Projucer.xcodeproj -scheme "Projucer - App" -configuration Release
+          cp -R build/Release/Projucer.app builds/
+
       - name: Save Projucer Project
         run: |
-          Projucer/Projucer.app/Contents/MacOS/Projucer --resave viator-de-noiser/"viator-de-noiser.jucer"
+          modules/JUCE/extras/Projucer/Builds/MacOSX/build/Release/Projucer.app/Contents/MacOS/Projucer --resave viator-de-noiser/"viator-de-noiser.jucer"
 
       - name: Download Pluginval
         run: |
+          mkdir Pluginval
           cd Pluginval
           curl -L "https://github.com/Tracktion/pluginval/releases/latest/download/pluginval_macOS.zip" -o pluginval.zip
           unzip pluginval
