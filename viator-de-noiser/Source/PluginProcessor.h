@@ -61,6 +61,9 @@ public:
         }
         }
     };
+    
+    float _width = 0.0f;
+    float _height = 0.0f;
 
 private:
     juce::dsp::ProcessSpec _spec;

@@ -28,6 +28,8 @@ ViatordenoiserAudioProcessor::ViatordenoiserAudioProcessor()
     }
     
     // init var states
+    variableTree.setProperty("width", 0, nullptr);
+    variableTree.setProperty("heigt", 0, nullptr);
     variableTree.setProperty("colorMenu", 1, nullptr);
     variableTree.setProperty("tooltipState", 1, nullptr);
 }
@@ -238,6 +240,8 @@ void ViatordenoiserAudioProcessor::setStateInformation (const void* data, int si
     if (tree.isValid())
     {
         _treeState.state = tree;
+        _width = variableTree.getProperty("width");
+        _height = variableTree.getProperty("height");
     }
 }
 

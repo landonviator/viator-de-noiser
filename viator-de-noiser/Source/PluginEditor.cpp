@@ -94,6 +94,12 @@ void ViatordenoiserAudioProcessorEditor::resized()
     auto labelFontSize = juce::jmin(labelHeight * 0.3f, 12.0f);
     _tooltipLabel.setBounds(_pluginArea.getX(), _pluginDials[0]->getBottom(), _pluginArea.getWidth(), labelHeight);
     _tooltipLabel.setFont(juce::Font("Helvetica", labelFontSize, juce::Font::FontStyleFlags::bold));
+    
+    // Save plugin size in value tree
+    audioProcessor.variableTree.setProperty("width", getWidth(), nullptr);
+    audioProcessor.variableTree.setProperty("height", getHeight(), nullptr);
+    audioProcessor._width = getWidth();
+    audioProcessor._height = getHeight();
 }
 
 #pragma mark Window
@@ -117,7 +123,16 @@ void ViatordenoiserAudioProcessorEditor::setWindowSizeLogic()
     const float height = width * 0.667;
 
     // Set the size
-    setSize (width, height);
+    if (audioProcessor._width != 0.0)
+    {
+        setSize(audioProcessor._width, audioProcessor._height);
+    }
+        
+    else
+    {
+        setSize (width, height);
+    }
+    
     setResizable(true, true);
     getConstrainer()->setFixedAspectRatio(1.5);
     setResizeLimits(width * 0.5, height * 0.5, r.getWidth(), r.getWidth() * 0.85);
