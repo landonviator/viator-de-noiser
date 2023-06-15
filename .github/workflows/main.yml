@@ -54,41 +54,41 @@ jobs:
 
       - name: Build Plugin Mac AU & VST3
         run: |
-          cd viator-voice-sweetener/Builds/MacOSX
-          xcodebuild -project "viator-voice-sweetener.xcodeproj" -scheme "viator-voice-sweetener - All" -configuration Release
+          cd viator-de-noiser/Builds/MacOSX
+          xcodebuild -project "viator-de-noiser.xcodeproj" -scheme "viator-de-noiser - All" -configuration Release
 
       - name: Validate Mac AU
         run: |
           sudo killall -9 AudioComponentRegistrar
           sudo killall -9 coreaudiod
-          Pluginval/pluginval.app/Contents/MacOS/pluginval --strictness-level 5 --validate-in-process --verbose --validate ~/Library/Audio/Plug-Ins/Components/viator-voice-sweetener.component || exit 1
+          Pluginval/pluginval.app/Contents/MacOS/pluginval --strictness-level 5 --validate-in-process --verbose --validate ~/Library/Audio/Plug-Ins/Components/viator-de-noiser.component || exit 1
 
       - name: Validate Mac VST3
         run: |
           sudo killall -9 AudioComponentRegistrar
           sudo killall -9 coreaudiod
-          Pluginval/pluginval.app/Contents/MacOS/pluginval --strictness-level 5 --validate-in-process --verbose --validate ~/Library/Audio/Plug-Ins/VST3/viator-voice-sweetener.vst3 || exit 1
+          Pluginval/pluginval.app/Contents/MacOS/pluginval --strictness-level 5 --validate-in-process --verbose --validate ~/Library/Audio/Plug-Ins/VST3/viator-de-noiser.vst3 || exit 1
 
       - name: Delete .a files
-        run: rm -R viator-voice-sweetener/Builds/MacOSX/build/Release/libviator-voice-sweetener.a
+        run: rm -R viator-de-noiser/Builds/MacOSX/build/Release/libviator-de-noiser.a
 
       - name: Sign Mac Builds
         env:
           HASH_OF_DEVELOPER_ID_APPLICATION: ${{ secrets.HASH_OF_DEVELOPER_ID_APPLICATION }}
         run: |
-          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp ~/Library/Audio/Plug-Ins/Components/viator-voice-sweetener.component
-          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp ~/Library/Audio/Plug-Ins/VST3/viator-voice-sweetener.vst3
+          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp ~/Library/Audio/Plug-Ins/Components/viator-de-noiser.component
+          codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp ~/Library/Audio/Plug-Ins/VST3/viator-de-noiser.vst3
 
       - name: Upload Mac AU
         uses: actions/upload-artifact@v3
         with:
-          name: Mac-Hermes-Voice-EQ-AU-Artifact
+          name: Mac-viator-de-noiser-AU-Artifact
           path: ~/Library/Audio/Plug-Ins/Components/
 
       - name: Upload Mac VST3
         uses: actions/upload-artifact@v3
         with:
-          name: Mac-Hermes-Voice-EQ-VST3-Artifact
+          name: Mac-viator-de-noiser-VST3-Artifact
           path: ~/Library/Audio/Plug-Ins/VST3/
 
   build-windows:
@@ -114,26 +114,26 @@ jobs:
 
       - name: Build Plugin Windows VST3
         run: |
-          cd viator-voice-sweetener/Builds/VisualStudio2022
-          msbuild "viator-voice-sweetener.sln" /p:Configuration=Release /p:Platform=x64
+          cd viator-de-noiser/Builds/VisualStudio2022
+          msbuild "viator-de-noiser.sln" /p:Configuration=Release /p:Platform=x64
 
       - name: Validate Windows VST3
         run: |
-          Pluginval\pluginval.exe --strictness-level 5 --validate-in-process --verbose --validate viator-voice-sweetener\Builds\VisualStudio2022\x64\Release\VST3\viator-voice-sweetener.vst3 || exit 1
+          Pluginval\pluginval.exe --strictness-level 5 --validate-in-process --verbose --validate viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-de-noiser.vst3 || exit 1
 
       - name: Delete useless Windows files
         run: |
-          rm -R viator-voice-sweetener\Builds\VisualStudio2022\x64\Release\VST3\resources.res
-          rm -R viator-voice-sweetener\Builds\VisualStudio2022\x64\Release\VST3\viator-v.4FC9B7FB.tlog
-          rm -R viator-voice-sweetener\Builds\VisualStudio2022\x64\Release\VST3\viator-voice-sweetener.exp
-          rm -R viator-voice-sweetener\Builds\VisualStudio2022\x64\Release\VST3\viator-voice-sweetener.iobj
-          rm -R viator-voice-sweetener\Builds\VisualStudio2022\x64\Release\VST3\viator-voice-sweetener.pdb
-          rm -R viator-voice-sweetener\Builds\VisualStudio2022\x64\Release\VST3\viator-voice-sweetener.vst3.recipe
-          rm -R viator-voice-sweetener\Builds\VisualStudio2022\x64\Release\VST3\viator-voice-sweetener_VST3.log
-          rm -R viator-voice-sweetener\Builds\VisualStudio2022\x64\Release\VST3\viator-voice-sweetener_VST3.vcxproj.FileListAbsolute.txt
+          rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\resources.res
+          rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-v.4FC9B7FB.tlog
+          rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-de-noiser.exp
+          rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-de-noiser.iobj
+          rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-de-noiser.pdb
+          rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-de-noiser.vst3.recipe
+          rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-de-noiser_VST3.log
+          rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-de-noiser_VST3.vcxproj.FileListAbsolute.txt
 
       - name: Upload Windows VST3
         uses: actions/upload-artifact@v3
         with:
-          name: Windows-Hermes-Voice-EQ-VST3-Artifact
-          path: viator-voice-sweetener\Builds\VisualStudio2022\x64\Release\VST3\
+          name: Windows-viator-de-noiser-VST3-Artifact
+          path: viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\
