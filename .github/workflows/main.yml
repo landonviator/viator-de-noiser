@@ -128,6 +128,8 @@ jobs:
           rm -R viator-de-noiser\Builds\VisualStudio2019\x64\Release\VST3\viator-de-noiser.exp
           rm -R viator-de-noiser\Builds\VisualStudio2019\x64\Release\VST3\viator-de-noiser.iobj
           rm -R viator-de-noiser\Builds\VisualStudio2019\x64\Release\VST3\viator-de-noiser.pdb
+          rm -R viator-de-noiser\Builds\VisualStudio2019\x64\Release\VST3\viator-de-noiser.lib
+          rm -R viator-de-noiser\Builds\VisualStudio2019\x64\Release\VST3\include_juce_audio_plugin_client_VST3.obj
           rm -R viator-de-noiser\Builds\VisualStudio2019\x64\Release\VST3\viator-de-noiser.vst3.recipe
           rm -R viator-de-noiser\Builds\VisualStudio2019\x64\Release\VST3\viator-de-noiser_VST3.log
           rm -R viator-de-noiser\Builds\VisualStudio2019\x64\Release\VST3\viator-de-noiser_VST3.vcxproj.FileListAbsolute.txt
