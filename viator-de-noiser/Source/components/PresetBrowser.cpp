@@ -15,6 +15,7 @@ PresetBrowser::PresetBrowser(ViatordenoiserAudioProcessor& p) : audioProcessor(p
 
 PresetBrowser::~PresetBrowser()
 {
+    _presetMenu.removeListener(this);
 }
 
 void PresetBrowser::paint (juce::Graphics& g)
@@ -105,24 +106,38 @@ void PresetBrowser::initMenu()
     addAndMakeVisible(_presetMenu);
     _presetMenu.setComponentID("Preset");
     _presetMenu.setTextWhenNothingSelected("Presets");
-    
-    _presetMenu.onChange = [this]()
+    _presetMenu.addListener(this);
+}
+
+void PresetBrowser::comboBoxChanged(juce::ComboBox *comboBoxThatHasChanged)
+{
+    // Check if the change is initiated by the user
+    if (!isSettingSelectionProgrammatically)
     {
         auto* parent = dynamic_cast<NavBar*>(getParentComponent());
-        
+
         // get file path from _xmlFilePaths by index
         parent->loadPreset(_xmlFilePaths[_presetMenu.getSelectedItemIndex()]);
-        
+
         // save current selection
         auto currentIndex = _presetMenu.getSelectedItemIndex();
         audioProcessor.variableTree.setProperty("presetMenu", currentIndex, nullptr);
-    };
+    }
+    
+    else
+    {
+        // Reset the flag for subsequent user-initiated changes
+        isSettingSelectionProgrammatically = false;
+    }
 }
 
 void PresetBrowser::attachMenu()
 {
+    isSettingSelectionProgrammatically = true;
+    
     int savedSelection = audioProcessor.variableTree.getProperty("presetMenu");
-    _presetMenu.setSelectedId(savedSelection + 1);
+    savedSelection += 1;
+    _presetMenu.setSelectedId(savedSelection, juce::dontSendNotification);
 }
 
 void PresetBrowser::updateMenuWithPresets()
@@ -149,8 +164,8 @@ void PresetBrowser::updateMenuWithPresets()
     }
     
     // restore menu selection
-    if (_presetMenu.getText() == "")
-    {
+//    if (_presetMenu.getText() == "")
+//    {
         attachMenu();
-    }
+//    }
 }

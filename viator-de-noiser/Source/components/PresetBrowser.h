@@ -4,7 +4,7 @@
 #include "../PluginProcessor.h"
 
 class NavBar;
-class PresetBrowser  : public juce::Component
+class PresetBrowser  : public juce::Component, public juce::ComboBox::Listener
 {
 public:
     PresetBrowser(ViatordenoiserAudioProcessor&);
@@ -47,9 +47,12 @@ private:
     void initMenu();
     void attachMenu();
     
+    void comboBoxChanged (juce::ComboBox *comboBoxThatHasChanged) override;
+    
 private:
     
     const int _numButtons = 2;
+    bool isSettingSelectionProgrammatically = false;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (PresetBrowser)
 };
