@@ -1,0 +1,1 @@
+C:\Users\lando\Documents\GitHub\viator-de-noiser\viator-de-noiser\Builds\VisualStudio2019\x64\Release\Shared Code\viator-de-noiser.lib
