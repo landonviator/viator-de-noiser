@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "63F0BDB5E1150D66ED92AF78"
-               BuildableName = "viator-de-noiser.component"
-               BlueprintName = "viator-de-noiser - AU"
+               BlueprintIdentifier = "B25F815E3FF35CCD54990F24"
+               BuildableName = "viator-de-noiser.vst3"
+               BlueprintName = "viator-de-noiser - VST3"
                ReferencedContainer = "container:viator-de-noiser.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "63F0BDB5E1150D66ED92AF78"
-            BuildableName = "viator-de-noiser.component"
-            BlueprintName = "viator-de-noiser - AU"
+            BlueprintIdentifier = "B25F815E3FF35CCD54990F24"
+            BuildableName = "viator-de-noiser.vst3"
+            BlueprintName = "viator-de-noiser - VST3"
             ReferencedContainer = "container:viator-de-noiser.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

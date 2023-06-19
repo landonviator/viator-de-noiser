@@ -41,7 +41,7 @@ private:
     viator_gui::Label _tooltipLabel;
     juce::StringArray _pluginDialTooltips =
     {
-      "Increases the amount of noise reduction in your signal."
+      "Increases the amount of noise reduction in your signal. It usually sounds great around half way :)"
     };
     
     juce::StringArray _ioDialTooltips =

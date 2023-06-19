@@ -12,6 +12,7 @@ ViatordenoiserAudioProcessorEditor::ViatordenoiserAudioProcessorEditor (Viatorde
     {
         _pluginDials.add(std::make_unique<viator_gui::Dial>(_pluginDialNames[i]));
         _pluginSliderAttachments.add(std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor._treeState, audioProcessor._parameterMap.getPluginSliderParams()[i].paramID, _pluginDials[i]->getSlider()));
+        _pluginDials[i]->getSlider().setTextValueSuffix(" %");
         addAndMakeVisible(*_pluginDials[i]);
     }
     
