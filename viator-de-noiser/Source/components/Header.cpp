@@ -34,8 +34,8 @@ void Header::paint (juce::Graphics& g)
 
 void Header::resized()
 {
-    _navBarArea  = getLocalBounds().removeFromRight(getHeight() * 9.6);
-    _navBar.setBounds(_navBarArea.withSizeKeepingCentre(_navBarArea.getWidth() * 0.75, getHeight() * 0.5));
+    //_navBarArea  = getLocalBounds().removeFromRight(getHeight() * 9.6);
+    //_navBar.setBounds(_navBarArea.withSizeKeepingCentre(_navBarArea.getWidth() * 0.75, getHeight() * 0.5));
 }
 
 void Header::changeListenerCallback(juce::ChangeBroadcaster *source)
