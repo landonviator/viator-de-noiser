@@ -112,7 +112,7 @@ jobs:
           name: Mac-viator-de-noiser-VST3-Artifact
           path: ~/Library/Audio/Plug-Ins/VST3/
 
-  build-windows:
+ build-windows:
     runs-on: windows-latest
 
     steps:
@@ -145,12 +145,9 @@ jobs:
       - name: Delete useless Windows files
         run: |
           rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\resources.res
-          rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-d.4F33FAE3.tlog
+          rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-s.FCED6316.tlog
           rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-de-noiser.exp
-          rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-de-noiser.iobj
           rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-de-noiser.pdb
-          rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-de-noiser.lib
-          rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\include_juce_audio_plugin_client_VST3.obj
           rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-de-noiser.vst3.recipe
           rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-de-noiser_VST3.log
           rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-de-noiser_VST3.vcxproj.FileListAbsolute.txt
