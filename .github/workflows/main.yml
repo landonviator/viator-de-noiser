@@ -121,7 +121,7 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Set up Visual Studio
+      - name: Set up VisualStudio
         uses: microsoft/setup-msbuild@v1.1
         with:
           vs-version: "latest"
