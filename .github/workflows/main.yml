@@ -145,7 +145,7 @@ jobs:
       - name: Delete useless Windows files
         run: |
           rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\resources.res
-          rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-v.024DCEA5.tlog
+          rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-d.4F33FAE3.tlog
           rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-de-noiser.exp
           rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-de-noiser.iobj
           rm -R viator-de-noiser\Builds\VisualStudio2022\x64\Release\VST3\viator-de-noiser.pdb
