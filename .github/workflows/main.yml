@@ -82,7 +82,7 @@ jobs:
       - name: Zip Mac Builds
         run: |
           zip -r viator-de-noiser.zip ~/Library/Audio/Plug-Ins/Components/viator-de-noiser.component  || exit 1
-          zip -r viator-de-noiser.zip ~/Library/Audio/Plug-Ins/Components/VST3viator-de-noiser.vst3  || exit 1
+          zip -r viator-de-noiser.zip ~/Library/Audio/Plug-Ins/Components/VST3/viator-de-noiser.vst3  || exit 1
 
       - name: Sign Mac Zips
         env:
