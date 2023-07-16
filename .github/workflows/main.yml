@@ -95,8 +95,8 @@ jobs:
         env:
           HASH_OF_DEVELOPER_ID_APPLICATION: ${{ secrets.HASH_OF_DEVELOPER_ID_APPLICATION }}
         run: |
-            xcrun notarytool submit viator-de-noiser-au.zip \ --keychain-profile "viatordsp" \ --wait  || exit 1
-            xcrun notarytool submit viator-de-noiser-vst3.zip \ --keychain-profile "viatordsp" \ --wait  || exit 1
+            xcrun notarytool submit viator-de-noiser-au.zip --keychain-profile "viatordsp" --wait  || exit 1
+            xcrun notarytool submit viator-de-noiser-vst3.zip --keychain-profile "viatordsp" --wait  || exit 1
 
       - name: Upload Mac AU
         uses: actions/upload-artifact@v3
