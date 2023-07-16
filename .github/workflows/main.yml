@@ -23,6 +23,8 @@ jobs:
           BUILD_CERTIFICATE_BASE64: ${{ secrets.BUILD_CERTIFICATE_BASE64 }}
           P12_PASSWORD: ${{ secrets.P12_PASSWORD }}
           KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
         run: |
           # create variables
           CERTIFICATE_PATH=$RUNNER_TEMP/build_certificate.p12
@@ -93,10 +95,11 @@ jobs:
 
       - name: Notarize Mac Zips
         env:
-          HASH_OF_DEVELOPER_ID_APPLICATION: ${{ secrets.HASH_OF_DEVELOPER_ID_APPLICATION }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
         run: |
-            xcrun notarytool submit viator-de-noiser-au.zip --keychain-profile "viatordsp" --wait  || exit 1
-            xcrun notarytool submit viator-de-noiser-vst3.zip --keychain-profile "viatordsp" --wait  || exit 1
+            xcrun notarytool submit viator-de-noiser-au.zip --username "$APPLE_ID" --password "$APPLE_PASSWORD" --wait  || exit 1
+            xcrun notarytool submit viator-de-noiser-vst3.zip --username "$APPLE_ID" --password "$APPLE_PASSWORD" --wait  || exit 1
 
       - name: Upload Mac AU
         uses: actions/upload-artifact@v3
