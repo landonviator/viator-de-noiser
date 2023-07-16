@@ -135,26 +135,26 @@ jobs:
 
       - name: Build Plugin Windows VST3
         run: |
-          cd viator-voice-leveler/Builds/VisualStudio2022
+          cd viator-voice-leveler/Builds/VisualStudio2019
           msbuild "viator-voice-leveler.sln" /p:Configuration=Release /p:Platform=x64
 
       - name: Validate Windows VST3
         run: |
-          Pluginval\pluginval.exe --strictness-level 5 --validate-in-process --verbose --validate viator-voice-leveler\Builds\VisualStudio2022\x64\Release\VST3\viator-voice-leveler.vst3 || exit 1
+          Pluginval\pluginval.exe --strictness-level 5 --validate-in-process --verbose --validate viator-voice-leveler\Builds\VisualStudio2019\x64\Release\VST3\viator-voice-leveler.vst3 || exit 1
 
       - name: Delete useless Windows files
         run: |
-          rm -R viator-voice-leveler\Builds\VisualStudio2022\x64\Release\VST3\resources.res
-          rm -R viator-voice-leveler\Builds\VisualStudio2022\x64\Release\VST3\viator-v.024DCEA5.tlog
-          rm -R viator-voice-leveler\Builds\VisualStudio2022\x64\Release\VST3\viator-voice-leveler.exp
-          rm -R viator-voice-leveler\Builds\VisualStudio2022\x64\Release\VST3\viator-voice-leveler.iobj
-          rm -R viator-voice-leveler\Builds\VisualStudio2022\x64\Release\VST3\viator-voice-leveler.pdb
-          rm -R viator-voice-leveler\Builds\VisualStudio2022\x64\Release\VST3\viator-voice-leveler.vst3.recipe
-          rm -R viator-voice-leveler\Builds\VisualStudio2022\x64\Release\VST3\viator-voice-leveler_VST3.log
-          rm -R viator-voice-leveler\Builds\VisualStudio2022\x64\Release\VST3\viator-voice-leveler_VST3.vcxproj.FileListAbsolute.txt
+          rm -R viator-voice-leveler\Builds\VisualStudio2019\x64\Release\VST3\resources.res
+          rm -R viator-voice-leveler\Builds\VisualStudio2019\x64\Release\VST3\viator-v.024DCEA5.tlog
+          rm -R viator-voice-leveler\Builds\VisualStudio2019\x64\Release\VST3\viator-voice-leveler.exp
+          rm -R viator-voice-leveler\Builds\VisualStudio2019\x64\Release\VST3\viator-voice-leveler.iobj
+          rm -R viator-voice-leveler\Builds\VisualStudio2019\x64\Release\VST3\viator-voice-leveler.pdb
+          rm -R viator-voice-leveler\Builds\VisualStudio2019\x64\Release\VST3\viator-voice-leveler.vst3.recipe
+          rm -R viator-voice-leveler\Builds\VisualStudio2019\x64\Release\VST3\viator-voice-leveler_VST3.log
+          rm -R viator-voice-leveler\Builds\VisualStudio2019\x64\Release\VST3\viator-voice-leveler_VST3.vcxproj.FileListAbsolute.txt
 
       - name: Upload Windows VST3
         uses: actions/upload-artifact@v3
         with:
           name: Windows-viator-voice-leveler-VST3-Artifact
-          path: viator-voice-leveler\Builds\VisualStudio2022\x64\Release\VST3\
+          path: viator-voice-leveler\Builds\VisualStudio2019\x64\Release\VST3\
