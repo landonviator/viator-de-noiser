@@ -8,6 +8,15 @@
   <MAINGROUP id="D3bTvF" name="viator-de-noiser">
     <GROUP id="{B3AD50A4-F2A6-DD38-921E-152EAEA8E21D}" name="Source">
       <GROUP id="{D3A9D711-4B20-D814-4A06-ABB5C79A24CC}" name="Assets">
+        <GROUP id="{AAEF78C8-0301-155D-CCC7-26B1F9197996}" name="vu-meter">
+          <FILE id="aXDH0V" name="back_vu-meter_decore5.png" compile="0" resource="1"
+                file="Source/Assets/vu-meter/back_vu-meter_decore5.png"/>
+          <FILE id="V1XODf" name="scale_vu-meter.png" compile="0" resource="1"
+                file="Source/Assets/vu-meter/scale_vu-meter.png"/>
+          <FILE id="lsJQzY" name="scale_vu-meterno_name.png" compile="0" resource="1"
+                file="Source/Assets/vu-meter/scale_vu-meterno_name.png"/>
+          <FILE id="C58oIa" name="vu_meter.png" compile="0" resource="1" file="Source/Assets/vu-meter/vu_meter.png"/>
+        </GROUP>
         <FILE id="LiJRxX" name="landon.png" compile="0" resource="1" file="Source/Assets/landon.png"/>
       </GROUP>
       <GROUP id="{7EFC17BA-8A52-967A-332B-B6F919C97BD2}" name="components">

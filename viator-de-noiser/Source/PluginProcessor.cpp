@@ -169,7 +169,6 @@ void ViatordenoiserAudioProcessor::updateParameters()
     _expanderModule.setRelease(150.0);
     _compensationModule.setGainDecibels(gainCompensation);
     _volumeModule.setGainDecibels(volume);
-    
 }
 
 //==============================================================================

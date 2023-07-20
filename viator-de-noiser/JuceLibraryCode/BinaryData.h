@@ -8,11 +8,23 @@
 
 namespace BinaryData
 {
+    extern const char*   back_vumeter_decore5_png;
+    const int            back_vumeter_decore5_pngSize = 102641;
+
+    extern const char*   scale_vumeter_png;
+    const int            scale_vumeter_pngSize = 9539;
+
+    extern const char*   scale_vumeterno_name_png;
+    const int            scale_vumeterno_name_pngSize = 8275;
+
+    extern const char*   vu_meter_png;
+    const int            vu_meter_pngSize = 5705215;
+
     extern const char*   landon_png;
     const int            landon_pngSize = 26270;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 1;
+    const int namedResourceListSize = 5;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

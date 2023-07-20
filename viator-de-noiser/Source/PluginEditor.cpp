@@ -11,8 +11,8 @@ ViatordenoiserAudioProcessorEditor::ViatordenoiserAudioProcessorEditor (Viatorde
     for (int i = 0; i < _numPluginDials; i++)
     {
         _pluginDials.add(std::make_unique<viator_gui::Dial>(_pluginDialNames[i]));
-        _pluginSliderAttachments.add(std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor._treeState, audioProcessor._parameterMap.getPluginSliderParams()[i].paramID, _pluginDials[i]->getSlider()));
-        _pluginDials[i]->getSlider().setTextValueSuffix(" %");
+        _pluginSliderAttachments.add(std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor._treeState, audioProcessor._parameterMap.getPluginSliderParams()[i].paramID, *_pluginDials[i]));
+        _pluginDials[i]->setTextValueSuffix(" %");
         addAndMakeVisible(*_pluginDials[i]);
     }
     
@@ -20,7 +20,7 @@ ViatordenoiserAudioProcessorEditor::ViatordenoiserAudioProcessorEditor (Viatorde
     for (int i = 0; i < _numIODials; i++)
     {
         _ioDials.add(std::make_unique<viator_gui::Dial>(_ioDialNames[i]));
-        _ioSliderAttachments.add(std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor._treeState, audioProcessor._parameterMap.getIOSliderParams()[i].paramID, _ioDials[i]->getSlider()));
+        _ioSliderAttachments.add(std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(audioProcessor._treeState, audioProcessor._parameterMap.getIOSliderParams()[i].paramID, *_ioDials[i]));
         addAndMakeVisible(*_ioDials[i]);
     }
     
@@ -44,6 +44,8 @@ ViatordenoiserAudioProcessorEditor::~ViatordenoiserAudioProcessorEditor()
 
 void ViatordenoiserAudioProcessorEditor::paint (juce::Graphics& g)
 {
+    _theme.setCurrentTheme(ViatorThemes::ViatorThemeData::Theme::kLofi);
+    
     // background style
     setBackgroundStyle(g);
     
@@ -143,7 +145,7 @@ void ViatordenoiserAudioProcessorEditor::setBackgroundStyle(juce::Graphics &g)
 {
     juce::Colour bgColor = _theme.getMainBackgroundColor();
     juce::Rectangle<int> rect = getLocalBounds();
-    viator_utils::gui_utils::Gradient::addRadialGradient(g, bgColor, rect, viator_utils::gui_utils::Gradient::RectShape::kSquared);
+    viator_utils::Gradient::addRadialGradient(g, bgColor, rect, viator_utils::Gradient::RectShape::kSquared);
 }
 
 #pragma mark Settings
@@ -198,14 +200,14 @@ void ViatordenoiserAudioProcessorEditor::initDialProps()
     for (int i = 0; i < _numPluginDials; i++)
     {
         _pluginDials[i]->setDialValueType(viator_gui::CustomDial::ValueType::kInt);
-        _pluginDials[i]->getSlider().addMouseListener(this, false);
+        _pluginDials[i]->addMouseListener(this, false);
     }
     
     // io
     for (int i = 0; i < _numIODials; i++)
     {
         _ioDials[i]->setDialValueType(viator_gui::CustomDial::ValueType::kFloat);
-        _ioDials[i]->getSlider().addMouseListener(this, false);
+        _ioDials[i]->addMouseListener(this, false);
     }
 }
 
@@ -226,7 +228,7 @@ void ViatordenoiserAudioProcessorEditor::mouseEnter(const juce::MouseEvent &even
 {
     for (int i = 0; i < _pluginDials.size(); ++i)
     {
-        if (event.eventComponent == &_pluginDials[i]->getSlider())
+        if (event.eventComponent == _pluginDials[i])
         {
             _tooltipLabel.setText(_pluginDialTooltips[i], juce::dontSendNotification);
         }
@@ -234,7 +236,7 @@ void ViatordenoiserAudioProcessorEditor::mouseEnter(const juce::MouseEvent &even
     
     for (int i = 0; i < _ioDials.size(); ++i)
     {
-        if (event.eventComponent == &_ioDials[i]->getSlider())
+        if (event.eventComponent == _ioDials[i])
         {
             _tooltipLabel.setText(_ioDialTooltips[i], juce::dontSendNotification);
         }
@@ -245,7 +247,7 @@ void ViatordenoiserAudioProcessorEditor::mouseExit(const juce::MouseEvent &event
 {
     for (int i = 0; i < _pluginDials.size(); ++i)
     {
-        if (event.eventComponent == &_pluginDials[i]->getSlider())
+        if (event.eventComponent == _pluginDials[i])
         {
             _tooltipLabel.setText("", juce::dontSendNotification);
         }
@@ -253,7 +255,7 @@ void ViatordenoiserAudioProcessorEditor::mouseExit(const juce::MouseEvent &event
     
     for (int i = 0; i < _ioDials.size(); ++i)
     {
-        if (event.eventComponent == &_ioDials[i]->getSlider())
+        if (event.eventComponent == _ioDials[i])
         {
             _tooltipLabel.setText("", juce::dontSendNotification);
         }

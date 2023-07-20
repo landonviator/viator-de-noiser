@@ -55,7 +55,7 @@ NavBar::~NavBar()
 void NavBar::paint (juce::Graphics& g)
 {
     juce::Rectangle<int> rect = getLocalBounds();
-    viator_utils::gui_utils::Gradient::addVerticalGradient(g, _bgColor, rect, viator_utils::gui_utils::Gradient::RectShape::kRounded);
+    viator_utils::Gradient::addVerticalGradient(g, _bgColor, rect, viator_utils::Gradient::RectShape::kRounded);
 }
 
 void NavBar::resized()

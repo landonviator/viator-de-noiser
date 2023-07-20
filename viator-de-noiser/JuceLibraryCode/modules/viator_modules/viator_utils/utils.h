@@ -22,7 +22,7 @@ namespace viator_utils
         }
         
         /** Hard clip an audio block */
-        static void hardClipBlock(juce::dsp::AudioBlock<float> &block)
+        static void hardClipBlock(juce::dsp::AudioBlock<float> &block, float thresh)
         {
             for (int ch = 0; ch < block.getNumChannels(); ++ch)
             {
@@ -30,9 +30,9 @@ namespace viator_utils
                 
                 for (int sample = 0; sample < block.getNumSamples(); ++sample)
                 {
-                    if (std::abs(data[sample]) >= juce::Decibels::decibelsToGain(-0.1))
+                    if (std::abs(data[sample]) >= juce::Decibels::decibelsToGain(thresh))
                     {
-                        data[sample] = std::copysign(juce::Decibels::decibelsToGain(-0.1), data[sample]);
+                        data[sample] = std::copysign(juce::Decibels::decibelsToGain(thresh), data[sample]);
                     }
                 }
             }
@@ -166,64 +166,6 @@ namespace viator_utils
 
 namespace gui_utils
 {
-
-class Gradient
-{
-public:
-    
-    enum class RectShape
-    {
-        kRounded,
-        kSquared
-    };
-    
-    static inline void addVerticalGradient (juce::Graphics& g,
-                                            juce::Colour& gradientColor,
-                                            juce::Rectangle<int>& rect,
-                                            RectShape shape)
-    {
-        g.setGradientFill(juce::ColourGradient::vertical(gradientColor,
-                                                         rect.getY(),
-                                                         gradientColor.darker(0.2),
-                                                         rect.getBottom()));
-        
-        if (shape == RectShape::kRounded)
-        {
-            g.fillRoundedRectangle(rect.toFloat(), 6.0f);
-        }
-        
-        else
-        {
-            g.fillRect(rect);
-        }
-    }
-    
-    static inline void addRadialGradient (juce::Graphics& g,
-                                          juce::Colour& gradientColor,
-                                          juce::Rectangle<int>& rect,
-                                          RectShape shape)
-    {
-        juce::Point<float> center = rect.getCentre().toFloat();
-        juce::ColourGradient gradient(gradientColor,
-                                      center.x,
-                                      center.y,
-                                      gradientColor.darker(0.4),
-                                      rect.getRight(),
-                                      rect.getBottom(),
-                                      true);
-        g.setGradientFill(gradient);
-        
-        if (shape == RectShape::kRounded)
-        {
-            g.fillRoundedRectangle(rect.toFloat(), 6.0f);
-        }
-        
-        else
-        {
-            g.fillRect(rect);
-        }
-    }
-};
 
 struct Colors
 {
