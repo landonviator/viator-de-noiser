@@ -91,7 +91,7 @@ jobs:
             codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp viator-de-noiser-au.zip  || exit 1
             codesign --deep --force --options=runtime --sign "$HASH_OF_DEVELOPER_ID_APPLICATION" --timestamp viator-de-noiser-vst3.zip  || exit 1
 
-      - name: Notarize Mac Zips
+      - name: Notarize Mac
         env:
           APPLE_ID: ${{ secrets.APPLE_ID }}
           APP_PASSWORD: ${{ secrets.APP_PASSWORD }}
