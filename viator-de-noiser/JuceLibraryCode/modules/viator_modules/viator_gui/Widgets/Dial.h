@@ -22,6 +22,11 @@ public:
                        juce::Colour auxBG,
                        juce::Colour auxText);
     
+    juce::Slider& getSlider()
+    {
+        return dial;
+    }
+    
     enum class ValueType
     {
         kInt,
@@ -34,6 +39,7 @@ public:
 private:
     viator_gui::CustomDial _customDial;
     viator_gui::CustomDialLabel customDialLabelLAF;
+    juce::Slider dial;
     
 private:
     
