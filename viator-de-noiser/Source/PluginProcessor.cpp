@@ -158,6 +158,7 @@ void ViatordenoiserAudioProcessor::updateParameters()
 {
     // params
     auto volume = _treeState.getRawParameterValue(ViatorParameters::outputID)->load();
+    auto gain = _treeState.getRawParameterValue(ViatorParameters::inputID)->load();
     auto reduction = _treeState.getRawParameterValue(ViatorParameters::reductionID)->load();
     
     // update
@@ -169,6 +170,7 @@ void ViatordenoiserAudioProcessor::updateParameters()
     _expanderModule.setRelease(150.0);
     _compensationModule.setGainDecibels(gainCompensation);
     _volumeModule.setGainDecibels(volume);
+    _gainModule.setGainDecibels(gain);
 }
 
 //==============================================================================
@@ -184,6 +186,8 @@ void ViatordenoiserAudioProcessor::prepareToPlay (double sampleRate, int samples
     _compensationModule.setRampDurationSeconds(0.02);
     _volumeModule.prepare(_spec);
     _volumeModule.setRampDurationSeconds(0.02);
+    _gainModule.prepare(_spec);
+    _gainModule.setRampDurationSeconds(0.02);
     
     updateParameters();
 }
@@ -205,7 +209,7 @@ bool ViatordenoiserAudioProcessor::isBusesLayoutSupported (const BusesLayout& la
 void ViatordenoiserAudioProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
     juce::dsp::AudioBlock<float> block {buffer};
-    
+    _gainModule.process(juce::dsp::ProcessContextReplacing<float>(block));
     _expanderModule.process(juce::dsp::ProcessContextReplacing<float>(block));
     _compensationModule.process(juce::dsp::ProcessContextReplacing<float>(block));
     _volumeModule.process(juce::dsp::ProcessContextReplacing<float>(block));

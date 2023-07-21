@@ -71,6 +71,7 @@ private:
     viator_dsp::Expander<float> _expanderModule;
     juce::dsp::Gain<float> _compensationModule;
     juce::dsp::Gain<float> _volumeModule;
+    juce::dsp::Gain<float> _gainModule;
     
 private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
